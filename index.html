@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
   <title>Pemilu Internal 2026 — Pixel Edition</title>
 
   <!-- Pixel + Jakarta Sans Fonts -->
@@ -586,208 +585,10 @@
         </div>
       </div>
 
-=======
-  <title>Pemilu Internal 2026 — Clean Interactive UI</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Plus Jakarta Sans -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Chart.js CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body class="font-sans text-slate-800 min-h-screen antialiased flex flex-col justify-between selection:bg-blue-600 selection:text-white">
-
-  <!-- NAVBAR HEADER -->
-  <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-      
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-extrabold text-lg shadow-md shadow-blue-500/20">
-          P
-        </div>
-        <div>
-          <h1 class="font-extrabold text-slate-900 text-lg tracking-tight">Pemilu Internal <span class="text-blue-600">2026</span></h1>
-          <p class="text-[11px] text-slate-500 font-medium">Sistem Pemilihan Ketua & Wakil Realtime</p>
-        </div>
-      </div>
-
-      <!-- Navigation View Switcher -->
-      <div class="flex bg-slate-100 p-1.5 rounded-xl text-xs font-semibold text-slate-600">
-        <button onclick="switchView('voting')" id="tabVoting" class="tab-btn active px-5 py-2.5 rounded-lg transition-all duration-300">
-          Bilik Suara Pemilih
-        </button>
-        <button onclick="switchView('admin')" id="tabAdmin" class="tab-btn px-5 py-2.5 rounded-lg transition-all duration-300">
-          Admin Dashboard
-        </button>
-      </div>
-
-    </div>
-  </header>
-
-  <!-- MAIN CONTAINER -->
-  <main class="max-w-7xl mx-auto px-6 py-10 w-full flex-grow">
-
-    <!-- ================= VIEW 1: BILIK VOTING PASLON ================= -->
-    <section id="viewVoting" class="space-y-12">
-      
-      <!-- Hero Title -->
-      <div class="text-center max-w-3xl mx-auto space-y-3">
-        <span class="inline-block px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold tracking-wide uppercase">
-          Kandidat Pemilu 2026
-        </span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-          Pilih Pasangan Calon <br class="hidden sm:inline"><span class="text-blue-600">Untuk Masa Depan Organisasi</span>
-        </h2>
-        <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-          Klik pada tombol <span class="font-semibold text-slate-800">"Lihat Visi Misi Detail ✦"</span> untuk membaca visi, misi, dan program kerja lengkap setiap kandidat.
-        </p>
-      </div>
-
-      <!-- CARDS GRID 3 PASLON -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- PASLON 01 -->
-        <div class="full-hero-card relative h-[560px] rounded-3xl overflow-hidden shadow-xl border border-slate-200 group">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" 
-               alt="Gading & Clara" 
-               class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
-          
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 z-20">
-            <div class="badge-trapezoid bg-white/95 backdrop-blur-md px-8 py-2 shadow-md flex items-center justify-center border-b border-blue-200">
-              <span class="text-blue-600 text-xs font-extrabold tracking-wider uppercase">Kandidat 01</span>
-            </div>
-          </div>
-
-          <div class="smooth-glass-overlay absolute inset-x-0 bottom-0 p-6 flex flex-col justify-end z-10 space-y-4 pt-20">
-            <div class="text-white space-y-1">
-              <span class="text-[11px] font-extrabold tracking-widest text-blue-400 uppercase">NOMOR URUT 01</span>
-              <h3 class="text-3xl font-extrabold tracking-tight drop-shadow-md">Gading & Clara</h3>
-              <p class="text-xs font-medium text-slate-300">"Digitalisasi & Kolaborasi Inovatif"</p>
-            </div>
-
-            <div class="space-y-2.5 pt-2">
-              <button onclick="openVisiModal(1)" 
-                      class="btn-neon-white w-full py-3 px-4 bg-white/10 hover:bg-white/25 border border-white/25 text-white text-xs font-semibold rounded-xl">
-                Lihat Visi Misi Detail ✦
-              </button>
-              <button onclick="handleVote(1)" 
-                      class="btn-vote btn-neon-white w-full py-3.5 px-5 bg-blue-600 hover:bg-blue-500 border border-blue-400 text-white text-xs tracking-wider uppercase font-extrabold rounded-xl shadow-lg">
-                Vote Paslon 01
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- PASLON 02 -->
-        <div class="full-hero-card relative h-[560px] rounded-3xl overflow-hidden shadow-xl border border-orange-500/30 group">
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" 
-               alt="Reyhan & Amanda" 
-               class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
-          
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 z-20">
-            <div class="badge-trapezoid bg-white/95 backdrop-blur-md px-8 py-2 shadow-md flex items-center justify-center border-b border-orange-200">
-              <span class="text-orange-600 text-xs font-extrabold tracking-wider uppercase">Kandidat 02</span>
-            </div>
-          </div>
-
-          <div class="smooth-glass-overlay absolute inset-x-0 bottom-0 p-6 flex flex-col justify-end z-10 space-y-4 pt-20">
-            <div class="text-white space-y-1">
-              <span class="text-[11px] font-extrabold tracking-widest text-orange-400 uppercase">NOMOR URUT 02</span>
-              <h3 class="text-3xl font-extrabold tracking-tight drop-shadow-md">Reyhan & Amanda</h3>
-              <p class="text-xs font-medium text-slate-300">"Inklusivitas & Keberagaman Komunitas"</p>
-            </div>
-
-            <div class="space-y-2.5 pt-2">
-              <button onclick="openVisiModal(2)" 
-                      class="btn-neon-white w-full py-3 px-4 bg-white/10 hover:bg-white/25 border border-white/25 text-white text-xs font-semibold rounded-xl">
-                Lihat Visi Misi Detail ✦
-              </button>
-              <button onclick="handleVote(2)" 
-                      class="btn-vote btn-neon-white w-full py-3.5 px-5 bg-orange-500 hover:bg-orange-400 border border-orange-300 text-white text-xs tracking-wider uppercase font-extrabold rounded-xl shadow-lg">
-                Vote Paslon 02
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- PASLON 03 -->
-        <div class="full-hero-card relative h-[560px] rounded-3xl overflow-hidden shadow-xl border border-slate-200 group">
-          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" 
-               alt="Faris & Nabila" 
-               class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
-          
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 z-20">
-            <div class="badge-trapezoid bg-white/95 backdrop-blur-md px-8 py-2 shadow-md flex items-center justify-center border-b border-purple-200">
-              <span class="text-purple-600 text-xs font-extrabold tracking-wider uppercase">Kandidat 03</span>
-            </div>
-          </div>
-
-          <div class="smooth-glass-overlay absolute inset-x-0 bottom-0 p-6 flex flex-col justify-end z-10 space-y-4 pt-20">
-            <div class="text-white space-y-1">
-              <span class="text-[11px] font-extrabold tracking-widest text-purple-400 uppercase">NOMOR URUT 03</span>
-              <h3 class="text-3xl font-extrabold tracking-tight drop-shadow-md">Faris & Nabila</h3>
-              <p class="text-xs font-medium text-slate-300">"Efisiensi Operasional & Akselerasi"</p>
-            </div>
-
-            <div class="space-y-2.5 pt-2">
-              <button onclick="openVisiModal(3)" 
-                      class="btn-neon-white w-full py-3 px-4 bg-white/10 hover:bg-white/25 border border-white/25 text-white text-xs font-semibold rounded-xl">
-                Lihat Visi Misi Detail ✦
-              </button>
-              <button onclick="handleVote(3)" 
-                      class="btn-vote btn-neon-white w-full py-3.5 px-5 bg-purple-600 hover:bg-purple-500 border border-purple-300 text-white text-xs tracking-wider uppercase font-extrabold rounded-xl shadow-lg">
-                Vote Paslon 03
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ================= VIEW 2: ADMIN DASHBOARD ================= -->
-    <section id="viewAdmin" class="space-y-8 hidden">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-6 border-b border-slate-200 gap-4">
-        <div>
-          <h2 class="text-2xl font-extrabold text-slate-900">Dashboard Realtime Rekapitulasi</h2>
-          <p class="text-xs text-slate-500 mt-1">Pantau perolehan suara secara langsung dari database.</p>
-        </div>
-        <button onclick="simulateNewVote()" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all shadow-md active:scale-95 flex items-center gap-2">
-          <span>+</span> Simulasi Vote Masuk
-        </button>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total DPT (Hak Pilih)</span>
-          <h4 class="text-3xl font-extrabold text-slate-900 mt-2">300</h4>
-        </div>
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Suara Masuk</span>
-          <h4 id="statTotalSuara" class="text-3xl font-extrabold text-blue-600 mt-2">184</h4>
-        </div>
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Tingkat Partisipasi</span>
-          <h4 id="statPercent" class="text-3xl font-extrabold text-emerald-600 mt-2">61.3%</h4>
-        </div>
-      </div>
-
-      <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-        <h3 class="text-lg font-bold text-slate-900 mb-6">Grafik Perolehan Suara Paslon</h3>
-        <div class="h-80 relative">
-          <canvas id="adminChart"></canvas>
-        </div>
-      </div>
->>>>>>> 028fe83395daad8ea19a3be4e2229b6f9c25f712
     </section>
 
   </main>
 
-<<<<<<< HEAD
   <!-- ── Pixel brick row ornament ── -->
   <div class="pixel-zigzag relative z-10" aria-hidden="true"></div>
   <div class="pixel-bricks relative z-10" aria-hidden="true"></div>
@@ -968,52 +769,6 @@
         <div class="w-2 h-2 bg-purple-400" style="box-shadow:1px 1px 0 #FFE033"></div>
       </div>
       <p style="color:rgba(255,255,255,0.5)">PIXEL EDITION ★ 2026</p>
-=======
-  <!-- MODAL POPUP VISI MISI DETAIL -->
-  <div id="visiModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden transition-opacity duration-300 opacity-0">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-8 space-y-6 shadow-2xl border border-slate-100 transform scale-95 transition-transform duration-300" id="modalContainer">
-      <div class="flex justify-between items-start">
-        <div>
-          <span id="modalNumber" class="text-xs font-bold px-3.5 py-1.5 bg-blue-50 text-blue-600 rounded-full">Kandidat 01</span>
-          <h3 id="modalTitle" class="text-2xl font-extrabold text-slate-900 mt-2">Gading & Clara</h3>
-          <p id="modalTagline" class="text-xs font-semibold text-blue-600 mt-0.5"></p>
-        </div>
-        <button onclick="closeVisiModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold p-1">✕</button>
-      </div>
-
-      <div class="space-y-4 text-sm text-slate-600 border-t border-b border-slate-100 py-4">
-        <div>
-          <h4 class="font-bold text-slate-900 mb-1">Deskripsi Singkat:</h4>
-          <p id="modalDesc" class="leading-relaxed text-xs text-slate-500"></p>
-        </div>
-        <div>
-          <h4 class="font-bold text-slate-900 mb-1">Visi Utama:</h4>
-          <p id="modalVisi" class="leading-relaxed font-medium text-slate-800"></p>
-        </div>
-        <div>
-          <h4 class="font-bold text-slate-900 mb-1">Misi & Program Kerja Unggulan:</h4>
-          <ul id="modalMisi" class="list-disc pl-5 space-y-1 text-xs"></ul>
-        </div>
-      </div>
-
-      <button onclick="closeVisiModal()" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider rounded-xl">
-        Tutup
-      </button>
-    </div>
-  </div>
-
-  <!-- TOAST NOTIFICATION -->
-  <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl text-xs font-bold flex items-center gap-3 translate-y-16 opacity-0 transition-all duration-500 z-50">
-    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-    <span id="toastMsg">Berhasil memilih paslon!</span>
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 font-medium">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-2">
-      <p>© 2026 Panitia Pemilu Internal. All rights reserved.</p>
-      <p class="text-slate-400">Visual First Clean UI</p>
->>>>>>> 028fe83395daad8ea19a3be4e2229b6f9c25f712
     </div>
   </footer>
 
@@ -1022,8 +777,4 @@
   <script src="js/chart.js"></script>
   <script src="js/app.js"></script>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 028fe83395daad8ea19a3be4e2229b6f9c25f712

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // =====================================================
 //  APP.JS — Pixel Edition Logic
 // =====================================================
@@ -8,28 +7,16 @@ let hasVoted = false;
 let votedPaslonId = null;
 
 // ── Init ──────────────────────────────────────────────
-=======
-// Listener saat dokumen HTML selesai dimuat
->>>>>>> 028fe83395daad8ea19a3be4e2229b6f9c25f712
 document.addEventListener('DOMContentLoaded', () => {
     initAdminChart();
 });
 
-<<<<<<< HEAD
 // ── Tab Switcher ──────────────────────────────────────
 function switchView(view) {
     const vVoting = document.getElementById('viewVoting');
     const vAdmin  = document.getElementById('viewAdmin');
     const tabVoting = document.getElementById('tabVoting');
     const tabAdmin  = document.getElementById('tabAdmin');
-=======
-// Switch Tab Antara Bilik Voting & Admin Dashboard
-function switchView(view) {
-    const vVoting = document.getElementById('viewVoting');
-    const vAdmin = document.getElementById('viewAdmin');
-    const tabVoting = document.getElementById('tabVoting');
-    const tabAdmin = document.getElementById('tabAdmin');
->>>>>>> 028fe83395daad8ea19a3be4e2229b6f9c25f712
 
     if (view === 'voting') {
         vVoting.classList.remove('hidden');
@@ -41,7 +28,6 @@ function switchView(view) {
         vAdmin.classList.remove('hidden');
         tabAdmin.classList.add('active');
         tabVoting.classList.remove('active');
-<<<<<<< HEAD
         if (chartInstance) {
             chartInstance.resize();
             chartInstance.update();
@@ -105,41 +91,6 @@ function openVisiModal(id) {
         modal.classList.remove('opacity-0');
         container.classList.remove('scale-95');
     });
-=======
-        if (chartInstance) chartInstance.update();
-    }
-}
-
-// Handling Pemilihan Suara (Voting)
-function handleVote(paslonId) {
-    const p = paslonDetails[paslonId];
-    if (confirm(`Konfirmasi Pilihan:\nApakah Anda yakin ingin memilih Paslon 0${paslonId} (${p.title})?`)) {
-        voteCounts[paslonId - 1]++;
-        updateStats();
-        showToast(`Suara Anda untuk Paslon 0${paslonId} (${p.title}) berhasil tersimpan!`);
-    }
-}
-
-// Modal Visi & Misi Detail
-function openVisiModal(id) {
-    const data = paslonDetails[id];
-    document.getElementById('modalNumber').innerText = data.number;
-    document.getElementById('modalTitle').innerText = data.title;
-    document.getElementById('modalTagline').innerText = `"${data.tagline}"`;
-    document.getElementById('modalDesc').innerText = data.desc;
-    document.getElementById('modalVisi').innerText = data.visi;
-
-    const misiUl = document.getElementById('modalMisi');
-    misiUl.innerHTML = data.misi.map(m => `<li>${m}</li>`).join('');
-
-    const modal = document.getElementById('visiModal');
-    const container = document.getElementById('modalContainer');
-    modal.classList.remove('hidden');
-    setTimeout(() => {
-        modal.classList.remove('opacity-0');
-        container.classList.remove('scale-95');
-    }, 10);
->>>>>>> 028fe83395daad8ea19a3be4e2229b6f9c25f712
 }
 
 function closeVisiModal() {
@@ -150,7 +101,6 @@ function closeVisiModal() {
     setTimeout(() => modal.classList.add('hidden'), 300);
 }
 
-<<<<<<< HEAD
 // Klik overlay backdrop → tutup modal
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('visiModal');
@@ -283,12 +233,3 @@ function showToast(msg) {
     toast.classList.remove('translate-y-16', 'opacity-0');
     setTimeout(() => toast.classList.add('translate-y-16', 'opacity-0'), 3800);
 }
-=======
-// Toast Notification
-function showToast(msg) {
-    const toast = document.getElementById('toast');
-    document.getElementById('toastMsg').innerText = msg;
-    toast.classList.remove('translate-y-16', 'opacity-0');
-    setTimeout(() => toast.classList.add('translate-y-16', 'opacity-0'), 3500);
-}
->>>>>>> 028fe83395daad8ea19a3be4e2229b6f9c25f712
