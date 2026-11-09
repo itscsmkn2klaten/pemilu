@@ -1,0 +1,1131 @@
+@import "tailwindcss";
+
+/* =====================================================
+   PIXEL BRIGHT THEME — Pemilu Internal 2026
+   Referensi: Fanta Pixel Art Bright Blue & Orange
+   ===================================================== */
+
+/* Google Fonts — Press Start 2P (Pixel Font) */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* ── Custom Theme Variables ── */
+:root {
+  --pixel-sky:        #38BAFF;
+  --pixel-sky-deep:   #1A8FD1;
+  --pixel-orange:     #FF8C1A;
+  --pixel-orange-lt:  #FFB347;
+  --pixel-purple:     #9B59EF;
+  --pixel-yellow:     #FFE033;
+  --pixel-green:      #4FC955;
+  --pixel-navy:       #1A1A4E;
+  --pixel-white:      #FFFFFF;
+  --pixel-shadow:     #1A1A4E;
+}
+
+/* =====================================================
+   BASE RESET & BODY
+   ===================================================== */
+*, *::before, *::after {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+body {
+  /* Sky gradient — lebih hidup dari atas ke bawah */
+  background-color: var(--pixel-sky);
+  background-image:
+    /* Layer 1: SVG pixel symbol tile — simbol-simbol ala Fanta */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.14)' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpolygon points='8,30 15,18 22,30'/%3E%3Cpolygon points='60,6 67,14 60,22 53,14'/%3E%3Cpolyline points='36,20 39,13 42,20 45,13 48,20'/%3E%3Crect x='80' y='14' width='8' height='8'/%3E%3Ccircle cx='14' cy='62' r='4'/%3E%3Cpolyline points='48,56 54,62 48,68'/%3E%3Cline x1='42' y1='62' x2='55' y2='62'/%3E%3Cpolygon points='82,46 85,54 82,62 79,54'/%3E%3Cpolygon points='76,54 82,51 88,54 82,57'/%3E%3Cpath d='M6 86 Q11 80 16 86 Q21 92 26 86'/%3E%3Cline x1='72' y1='82' x2='72' y2='92'/%3E%3Cline x1='67' y1='87' x2='77' y2='87'/%3E%3Ccircle cx='38' cy='86' r='2' fill='rgba(255,255,255,0.14)'/%3E%3Ccircle cx='45' cy='82' r='2' fill='rgba(255,255,255,0.14)'/%3E%3Ccircle cx='45' cy='90' r='2' fill='rgba(255,255,255,0.14)'/%3E%3Crect x='4' y='46' width='6' height='6'/%3E%3Cpolyline points='78,30 82,24 86,30'/%3E%3C/g%3E%3C/svg%3E"),
+    /* Layer 2: Fine dot grid */
+    radial-gradient(circle, rgba(255,255,255,0.09) 1px, transparent 1px),
+    /* Layer 3: Sky vertical gradient */
+    linear-gradient(to bottom,
+      #5ECEFF 0%,
+      #38BAFF 30%,
+      #1A9FE8 70%,
+      #1585CF 100%
+    );
+  background-size: 96px 96px, 20px 20px, 100% 100%;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--pixel-navy);
+}
+
+/* ── Layered radial glows (depth & cloud effect) ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    /* Top-left cloud glow */
+    radial-gradient(ellipse 280px 120px at 8% 12%, rgba(255,255,255,0.18) 0%, transparent 70%),
+    /* Top-right cloud glow */
+    radial-gradient(ellipse 200px 90px at 88% 8%, rgba(255,255,255,0.14) 0%, transparent 70%),
+    /* Center-top subtle */
+    radial-gradient(ellipse 160px 60px at 50% 18%, rgba(255,255,255,0.09) 0%, transparent 70%),
+    /* Bottom tint — deeper blue */
+    radial-gradient(ellipse 100% 40% at 50% 100%, rgba(21,133,207,0.55) 0%, transparent 100%),
+    /* Rim lights left/right for depth */
+    radial-gradient(ellipse 80px 400px at 0% 50%, rgba(255,255,255,0.06) 0%, transparent 100%),
+    radial-gradient(ellipse 80px 400px at 100% 50%, rgba(255,255,255,0.06) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =====================================================
+   NAVBAR — Pixel style
+   ===================================================== */
+.pixel-navbar {
+  background-color: var(--pixel-orange);
+  border-bottom: 4px solid var(--pixel-navy);
+  box-shadow: 0 4px 0 0 var(--pixel-navy);
+  position: relative;
+}
+
+.pixel-navbar::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0; right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--pixel-yellow) 0px 8px,
+    var(--pixel-orange) 8px 16px
+  );
+}
+
+.pixel-logo-box {
+  background-color: var(--pixel-navy);
+  border: 3px solid var(--pixel-yellow);
+  box-shadow: 3px 3px 0 0 var(--pixel-yellow);
+  image-rendering: pixelated;
+}
+
+/* ── Tab buttons ── */
+.tab-btn {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 7px;
+  letter-spacing: 0.05em;
+  border: 3px solid transparent;
+  transition: none; /* pixel: no smooth transitions */
+}
+
+.tab-btn:hover {
+  background-color: var(--pixel-yellow) !important;
+  color: var(--pixel-navy) !important;
+  border-color: var(--pixel-navy);
+  box-shadow: 3px 3px 0 0 var(--pixel-navy);
+  transform: translate(-1px, -1px);
+}
+
+.tab-btn.active {
+  background-color: var(--pixel-white) !important;
+  color: var(--pixel-navy) !important;
+  border-color: var(--pixel-navy);
+  box-shadow: 3px 3px 0 0 var(--pixel-navy);
+  font-weight: 700;
+}
+
+/* =====================================================
+   HERO SECTION TITLE
+   ===================================================== */
+.pixel-badge {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 7px;
+  background-color: var(--pixel-yellow);
+  color: var(--pixel-navy);
+  border: 3px solid var(--pixel-navy);
+  box-shadow: 4px 4px 0 0 var(--pixel-navy);
+  padding: 8px 16px;
+  display: inline-block;
+}
+
+.pixel-heading {
+  font-family: 'Press Start 2P', cursive;
+  line-height: 1.6;
+  color: var(--pixel-white);
+  text-shadow:
+    3px 3px 0 var(--pixel-navy),
+    -1px -1px 0 var(--pixel-navy),
+    1px -1px 0 var(--pixel-navy),
+    -1px 1px 0 var(--pixel-navy);
+}
+
+.pixel-heading span {
+  color: var(--pixel-yellow);
+}
+
+.pixel-subtext {
+  color: var(--pixel-white);
+  background: rgba(26, 26, 78, 0.5);
+  border-left: 4px solid var(--pixel-yellow);
+  padding: 8px 16px;
+  font-size: 0.8rem;
+}
+
+/* =====================================================
+   CANDIDATE CARDS — Pixel hero cards
+   ===================================================== */
+.full-hero-card {
+  border: 4px solid var(--pixel-navy);
+  box-shadow: 8px 8px 0 0 var(--pixel-navy);
+  transition: none;
+  position: relative;
+}
+
+.full-hero-card::before {
+  /* pixel corner decoration top-left */
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px;
+  width: 12px; height: 12px;
+  background: var(--pixel-yellow);
+  border: 2px solid var(--pixel-navy);
+  z-index: 30;
+}
+
+.full-hero-card::after {
+  /* pixel corner decoration bottom-right */
+  content: '';
+  position: absolute;
+  bottom: -4px; right: -4px;
+  width: 12px; height: 12px;
+  background: var(--pixel-yellow);
+  border: 2px solid var(--pixel-navy);
+  z-index: 30;
+}
+
+.full-hero-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0 0 var(--pixel-navy);
+}
+
+/* ── Overlay gradient ── */
+.smooth-glass-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(26, 26, 78, 0.92) 0%,
+    rgba(26, 26, 78, 0.55) 50%,
+    rgba(26, 26, 78, 0) 100%
+  );
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: none;
+}
+
+.full-hero-card:hover .smooth-glass-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(26, 26, 78, 0.97) 0%,
+    rgba(26, 26, 78, 0.65) 55%,
+    rgba(26, 26, 78, 0) 100%
+  );
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* ── Badge Trapezoid ── */
+.badge-trapezoid {
+  clip-path: none !important;  /* override — pixel style: rectangle */
+  background-color: var(--pixel-orange) !important;
+  border: 3px solid var(--pixel-navy) !important;
+  border-top: none !important;
+  box-shadow: 0 4px 0 0 var(--pixel-navy);
+  backdrop-filter: none !important;
+}
+
+.badge-trapezoid span {
+  font-family: 'Press Start 2P', cursive !important;
+  font-size: 7px !important;
+  color: var(--pixel-white) !important;
+  letter-spacing: 0.08em;
+}
+
+/* ── Name heading on card ── */
+.card-name {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--pixel-white);
+  text-shadow: 2px 2px 0 var(--pixel-navy);
+}
+
+/* ── Number badge on card ── */
+.card-number {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 7px;
+  color: var(--pixel-yellow);
+  letter-spacing: 0.1em;
+}
+
+/* =====================================================
+   BUTTONS — Pixel style
+   ===================================================== */
+.btn-neon-black {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 7px;
+  letter-spacing: 0.05em;
+  border: 3px solid var(--pixel-navy) !important;
+  box-shadow: 4px 4px 0 0 var(--pixel-navy);
+  transition: none;
+  image-rendering: pixelated;
+}
+
+.btn-neon-black:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--pixel-navy);
+  filter: brightness(1.1);
+}
+
+.btn-neon-black:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 var(--pixel-navy);
+}
+
+/* ── Vote button specific ── */
+.btn-vote {
+  background-color: var(--pixel-orange) !important;
+  border-color: var(--pixel-navy) !important;
+  color: var(--pixel-white) !important;
+  box-shadow: 4px 4px 0 0 rgba(0,0,0,0.5);
+}
+
+.btn-vote:hover {
+  background-color: var(--pixel-yellow) !important;
+  color: var(--pixel-navy) !important;
+}
+
+/* =====================================================
+   ADMIN DASHBOARD — Pixel panels
+   ===================================================== */
+.pixel-panel {
+  background-color: var(--pixel-white);
+  border: 4px solid var(--pixel-navy);
+  box-shadow: 6px 6px 0 0 var(--pixel-navy);
+  border-radius: 0 !important;
+}
+
+.pixel-stat-card {
+  background-color: var(--pixel-orange);
+  border: 4px solid var(--pixel-navy);
+  box-shadow: 6px 6px 0 0 var(--pixel-navy);
+  border-radius: 0 !important;
+  color: var(--pixel-white);
+}
+
+.pixel-stat-card:nth-child(2) {
+  background-color: var(--pixel-sky-deep);
+}
+
+.pixel-stat-card:nth-child(3) {
+  background-color: var(--pixel-green);
+}
+
+.pixel-stat-label {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 6px;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.85);
+}
+
+.pixel-stat-value {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 22px;
+  color: var(--pixel-white);
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+}
+
+/* ── Simulasi button ── */
+.pixel-btn-sim {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 7px;
+  background-color: var(--pixel-yellow);
+  color: var(--pixel-navy);
+  border: 3px solid var(--pixel-navy);
+  box-shadow: 4px 4px 0 0 var(--pixel-navy);
+  border-radius: 0 !important;
+  transition: none;
+}
+
+.pixel-btn-sim:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--pixel-navy);
+}
+
+.pixel-btn-sim:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 var(--pixel-navy);
+}
+
+/* =====================================================
+   MODAL — Pixel dialog box
+   ===================================================== */
+.pixel-modal-overlay {
+  background: rgba(26, 26, 78, 0.85);
+}
+
+.pixel-modal-box {
+  background-color: var(--pixel-sky);
+  border: 4px solid var(--pixel-navy);
+  box-shadow: 8px 8px 0 0 var(--pixel-navy);
+  border-radius: 0 !important;
+}
+
+.pixel-modal-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  color: var(--pixel-white);
+  text-shadow: 2px 2px 0 var(--pixel-navy);
+}
+
+.pixel-modal-btn {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 8px;
+  background-color: var(--pixel-navy);
+  color: var(--pixel-white);
+  border: 3px solid var(--pixel-yellow);
+  box-shadow: 4px 4px 0 0 var(--pixel-yellow);
+  border-radius: 0 !important;
+  transition: none;
+}
+
+.pixel-modal-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--pixel-yellow);
+}
+
+.pixel-modal-close {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  color: var(--pixel-white);
+  background: var(--pixel-orange);
+  border: 3px solid var(--pixel-navy);
+  box-shadow: 3px 3px 0 0 var(--pixel-navy);
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: none;
+}
+
+.pixel-modal-close:hover {
+  background: var(--pixel-yellow);
+  color: var(--pixel-navy);
+  transform: translate(-1px, -1px);
+}
+
+/* =====================================================
+   TOAST — Pixel notification
+   ===================================================== */
+.pixel-toast {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 7px;
+  background-color: var(--pixel-navy);
+  color: var(--pixel-white);
+  border: 3px solid var(--pixel-yellow);
+  box-shadow: 6px 6px 0 0 var(--pixel-yellow);
+  border-radius: 0 !important;
+  letter-spacing: 0.05em;
+}
+
+/* =====================================================
+   FOOTER — Pixel style
+   ===================================================== */
+.pixel-footer {
+  background-color: var(--pixel-navy);
+  border-top: 4px solid var(--pixel-orange);
+  color: var(--pixel-white);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 7px;
+  letter-spacing: 0.05em;
+}
+
+.pixel-footer::before {
+  content: '';
+  display: block;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--pixel-orange) 0px 8px,
+    var(--pixel-yellow) 8px 16px
+  );
+  margin-bottom: 0;
+}
+
+/* =====================================================
+   PIXEL DECORATIVE ELEMENTS
+   ===================================================== */
+
+/* ── Pixel stars / sparkles floating ── */
+.pixel-star {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--pixel-yellow);
+  animation: pixelFloat 3s steps(6) infinite alternate;
+  user-select: none;
+  pointer-events: none;
+  text-shadow: 2px 2px 0 var(--pixel-navy);
+}
+
+.pixel-star:nth-child(2n)   { animation-delay: -1s; color: var(--pixel-orange); }
+.pixel-star:nth-child(3n)   { animation-delay: -2s; color: var(--pixel-white); }
+.pixel-star:nth-child(4n)   { animation-delay: -0.5s; }
+
+/* ── Pixel sprite character (CSS art) ── */
+.pixel-char {
+  animation: pixelBounce 0.6s steps(4) infinite alternate;
+  image-rendering: pixelated;
+  font-size: 24px;
+  filter: drop-shadow(2px 2px 0 var(--pixel-navy));
+}
+
+/* ── Pixel border pattern on section edges ── */
+.pixel-border-top {
+  border-top: 8px solid var(--pixel-navy);
+  border-image: repeating-linear-gradient(
+    90deg,
+    var(--pixel-orange) 0px 16px,
+    var(--pixel-yellow) 16px 32px,
+    var(--pixel-sky) 32px 48px
+  ) 8;
+}
+
+.pixel-border-bottom {
+  border-bottom: 8px solid var(--pixel-navy);
+  border-image: repeating-linear-gradient(
+    90deg,
+    var(--pixel-sky) 0px 16px,
+    var(--pixel-orange) 16px 32px,
+    var(--pixel-yellow) 32px 48px
+  ) 8;
+}
+
+/* ── Pixel "cloud" / floating panel ── */
+.pixel-cloud-panel {
+  background: var(--pixel-white);
+  border: 4px solid var(--pixel-navy);
+  box-shadow: 6px 6px 0 0 var(--pixel-navy);
+  clip-path: polygon(
+    8px 0, calc(100% - 8px) 0,
+    100% 8px, 100% calc(100% - 8px),
+    calc(100% - 8px) 100%, 8px 100%,
+    0 calc(100% - 8px), 0 8px
+  );
+}
+
+/* ── Blinking cursor effect ── */
+.pixel-cursor::after {
+  content: '▮';
+  display: inline;
+  animation: pixelBlink 1s steps(1) infinite;
+  color: var(--pixel-yellow);
+  margin-left: 4px;
+}
+
+/* ── Pixel section separator ── */
+.pixel-separator {
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--pixel-navy)   0px 8px,
+    var(--pixel-orange) 8px 16px,
+    var(--pixel-yellow) 16px 24px,
+    var(--pixel-sky)    24px 32px
+  );
+  margin: 0;
+}
+
+/* ── Admin section header ── */
+.pixel-admin-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 14px;
+  color: var(--pixel-white);
+  text-shadow: 3px 3px 0 var(--pixel-navy);
+}
+
+/* ── Selection highlight ── */
+::selection {
+  background-color: var(--pixel-orange);
+  color: var(--pixel-white);
+}
+
+/* ── Scrollbar pixel style ── */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--pixel-navy); }
+::-webkit-scrollbar-thumb {
+  background: var(--pixel-orange);
+  border: 2px solid var(--pixel-navy);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--pixel-yellow); }
+
+/* =====================================================
+   KEYFRAMES (redundant as backup if Tailwind purges)
+   ===================================================== */
+@keyframes pixelFloat {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  50%  { transform: translateY(-6px) rotate(2deg); }
+  100% { transform: translateY(-12px) rotate(-2deg); }
+}
+
+@keyframes pixelBounce {
+  0%   { transform: translateY(0px); }
+  100% { transform: translateY(-8px); }
+}
+
+@keyframes pixelBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+
+/* =====================================================
+   TAMBAHAN: Vote Confirm Modal & Button States
+   ===================================================== */
+
+/* ── Modal overlay scroll ── */
+.pixel-modal-overlay {
+  overflow-y: auto;
+}
+
+/* ── Modal box scrollable content ── */
+.pixel-modal-box {
+  background-color: var(--pixel-sky-deep, #1A8FD1);
+  border: 4px solid var(--pixel-navy);
+  box-shadow: 8px 8px 0 0 var(--pixel-navy);
+  border-radius: 0 !important;
+}
+
+/* ── Vote confirm modal - centered small box ── */
+#voteConfirmBox {
+  background-color: #1A1A4E;
+  border: 4px solid #FFE033;
+  box-shadow: 8px 8px 0 0 #FFE033;
+}
+
+/* ── Vote confirm buttons hover ── */
+#voteConfirmModal button:not(.btn-vote):hover {
+  background: rgba(255,255,255,0.1) !important;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.5) !important;
+}
+
+/* ── Voted state visual ── */
+.btn-vote.voted {
+  background-color: #4FC955 !important;
+  cursor: not-allowed !important;
+  opacity: 0.9 !important;
+  box-shadow: 4px 4px 0 0 #2A7A30 !important;
+}
+
+.btn-vote.locked {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+  filter: grayscale(80%);
+}
+
+/* ── Misi list item hover ── */
+#modalMisi li:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* ── Modal max height with scroll ── */
+#modalContainer {
+  max-height: 90vh;
+}
+
+/* ── Visi block highlight ── */
+.pixel-visi-block {
+  background: rgba(255, 224, 51, 0.12);
+  border: 3px solid #FFE033;
+  padding: 12px;
+  box-shadow: 4px 4px 0 #1A1A4E;
+}
+
+/* ── Confirm check icon pulse ── */
+@keyframes pixelPulse {
+  0%  { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100%{ transform: scale(1); }
+}
+
+#confirmPaslonEmoji {
+  display: inline-block;
+  animation: pixelPulse 1.2s steps(4) infinite;
+}
+
+/* =====================================================
+   BACKGROUND ORNAMENTS & TEXTURES — Pixel Style
+   ===================================================== */
+
+/* ── Pixel Cloud (CSS box-shadow art) ── */
+.pixel-cloud {
+  position: absolute;
+  pointer-events: none;
+  /* Each pixel: width height color = one cloud pixel block */
+  --c: #FFFFFF;
+  --cs: rgba(255,255,255,0.85);
+}
+
+/* Cloud shape via box-shadow pixel art */
+.pixel-cloud-1 {
+  width: 8px; height: 8px;
+  background: var(--cs);
+  box-shadow:
+    8px   0px var(--cs),  16px  0px var(--cs),
+    0px  -8px var(--cs),   8px -8px var(--cs),  16px -8px var(--cs), 24px -8px var(--cs),
+   -8px -16px var(--cs),   0px -16px var(--cs),  8px -16px var(--cs), 16px -16px var(--cs), 24px -16px var(--cs), 32px -16px var(--cs),
+    8px -24px var(--cs),  16px -24px var(--cs),  24px -24px var(--cs);
+  opacity: 0.75;
+}
+
+.pixel-cloud-2 {
+  width: 8px; height: 8px;
+  background: rgba(255,255,255,0.6);
+  box-shadow:
+    8px   0px rgba(255,255,255,0.6),
+    0px  -8px rgba(255,255,255,0.6),  8px -8px rgba(255,255,255,0.6), 16px -8px rgba(255,255,255,0.6),
+    8px -16px rgba(255,255,255,0.6);
+  opacity: 0.55;
+}
+
+/* ── Cloud float animation ── */
+@keyframes cloudDrift {
+  0%   { transform: translateX(0px); }
+  50%  { transform: translateX(20px); }
+  100% { transform: translateX(0px); }
+}
+.pixel-cloud { animation: cloudDrift 12s ease-in-out infinite; }
+.pixel-cloud:nth-child(2) { animation-duration: 18s; animation-delay: -6s; }
+.pixel-cloud:nth-child(3) { animation-duration: 14s; animation-delay: -3s; }
+
+/* ── Pixel Coin (spinning coin ornament) ── */
+@keyframes coinSpin {
+  0%   { transform: scaleX(1); }
+  25%  { transform: scaleX(0.2); }
+  50%  { transform: scaleX(1); }
+  75%  { transform: scaleX(0.2); }
+  100% { transform: scaleX(1); }
+}
+
+.pixel-coin {
+  display: inline-block;
+  width: 16px; height: 16px;
+  background: #FFE033;
+  border: 3px solid #C8A800;
+  box-shadow: 2px 2px 0 #1A1A4E;
+  animation: coinSpin 1.6s steps(4) infinite;
+}
+
+/* ── Pixel Ground Strip ── */
+.pixel-ground {
+  position: relative;
+  width: 100%;
+  height: 24px;
+  background: repeating-linear-gradient(
+    90deg,
+    #2A7A30 0px 16px,
+    #4FC955 16px 32px
+  );
+  border-top: 4px solid #1A1A4E;
+  box-shadow: 0 -4px 0 rgba(0,0,0,0.2);
+}
+
+.pixel-ground::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0; right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    #3D9B42 0px 16px,
+    #5BC562 16px 32px
+  );
+  border-top: 3px solid #1A1A4E;
+}
+
+/* ── Pixel Diamond / Gem ── */
+.pixel-gem {
+  display: inline-block;
+  width: 12px; height: 12px;
+  background: #9B59EF;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  box-shadow: 2px 2px 0 #1A1A4E;
+  animation: pixelFloat 2.5s steps(5) infinite alternate;
+}
+
+.pixel-gem.orange {
+  background: #FF8C1A;
+  animation-delay: -1s;
+}
+
+.pixel-gem.yellow {
+  background: #FFE033;
+  animation-delay: -2s;
+}
+
+/* ── Pixel Star burst ── */
+.pixel-starburst {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1;
+  animation: pixelFloat 3s steps(6) infinite alternate;
+  filter: drop-shadow(2px 2px 0 #1A1A4E);
+  user-select: none;
+}
+
+/* ── Scrolling ticker row (pixel banner) ── */
+@keyframes tickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.pixel-ticker {
+  overflow: hidden;
+  white-space: nowrap;
+  background: #1A1A4E;
+  border-top: 3px solid #FFE033;
+  border-bottom: 3px solid #FFE033;
+  padding: 6px 0;
+}
+
+.pixel-ticker-inner {
+  display: inline-block;
+  animation: tickerScroll 20s linear infinite;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 7px;
+  color: #FFE033;
+  letter-spacing: 0.08em;
+}
+
+/* ── Pixel "bricks" row decoration ── */
+.pixel-bricks {
+  width: 100%;
+  height: 16px;
+  background: repeating-linear-gradient(
+    90deg,
+    #C45A00 0px 32px,
+    #FF8C1A 32px 33px
+  );
+  border-top: 2px solid #1A1A4E;
+  border-bottom: 2px solid #1A1A4E;
+  position: relative;
+  overflow: hidden;
+}
+
+.pixel-bricks::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    transparent 0px 7px,
+    #1A1A4E 7px 9px
+  );
+}
+
+/* ── Floating pixel badge chips ── */
+.pixel-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: rgba(26,26,78,0.65);
+  border: 2px solid rgba(255,224,51,0.5);
+  box-shadow: 3px 3px 0 rgba(26,26,78,0.4);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 6px;
+  color: rgba(255,255,255,0.85);
+  animation: pixelFloat 4s steps(6) infinite alternate;
+}
+
+/* ── Large decorative pixel "P" letter blocks ── */
+.pixel-block-letter {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 48px;
+  color: rgba(255,255,255,0.06);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  text-shadow: none;
+  letter-spacing: -2px;
+}
+
+/* ── Background section: wavy pixel strip ── */
+.pixel-wave-strip {
+  width: 100%;
+  height: 12px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px 4px,
+    rgba(255,255,255,0.15) 4px 8px
+  );
+  clip-path: polygon(
+    0 50%, 2% 20%, 4% 50%, 6% 80%, 8% 50%,
+    10% 20%, 12% 50%, 14% 80%, 16% 50%,
+    18% 20%, 20% 50%, 22% 80%, 24% 50%,
+    26% 20%, 28% 50%, 30% 80%, 32% 50%,
+    34% 20%, 36% 50%, 38% 80%, 40% 50%,
+    42% 20%, 44% 50%, 46% 80%, 48% 50%,
+    50% 20%, 52% 50%, 54% 80%, 56% 50%,
+    58% 20%, 60% 50%, 62% 80%, 64% 50%,
+    66% 20%, 68% 50%, 70% 80%, 72% 50%,
+    74% 20%, 76% 50%, 78% 80%, 80% 50%,
+    82% 20%, 84% 50%, 86% 80%, 88% 50%,
+    90% 20%, 92% 50%, 94% 80%, 96% 50%,
+    98% 20%, 100% 50%, 100% 100%, 0 100%
+  );
+}
+
+/* =====================================================
+   EXTRA BACKGROUND ORNAMENTS — richer textures
+   ===================================================== */
+
+/* ── Pixel "mountain / hill" platform blocks ── */
+.pixel-platform {
+  display: inline-block;
+  background: #FF8C1A;
+  border: 3px solid #1A1A4E;
+  box-shadow: 4px 4px 0 #1A1A4E;
+  position: relative;
+}
+.pixel-platform::before {
+  content: '';
+  position: absolute;
+  top: -6px; left: 4px; right: 4px;
+  height: 6px;
+  background: #FFB347;
+  border: 2px solid #1A1A4E;
+  border-bottom: none;
+}
+
+/* ── Pixel "question box" (like Mario) ── */
+.pixel-qbox {
+  display: inline-block;
+  width: 24px; height: 24px;
+  background: #FFE033;
+  border: 3px solid #1A1A4E;
+  box-shadow: 3px 3px 0 #1A1A4E;
+  position: relative;
+  animation: pixelBounce 0.8s steps(3) infinite alternate;
+}
+.pixel-qbox::before {
+  content: '?';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  color: #1A1A4E;
+  line-height: 24px;
+  text-align: center;
+  padding-top: 2px;
+}
+
+/* ── Pixel "mushroom" ornament ── */
+.pixel-mushroom {
+  display: inline-block;
+  position: relative;
+  animation: pixelFloat 2s steps(4) infinite alternate;
+}
+.pixel-mushroom::before {
+  content: '🍄';
+  font-size: 20px;
+  filter: drop-shadow(2px 2px 0 #1A1A4E);
+  image-rendering: pixelated;
+}
+
+/* ── Pixel "arrow" sign ── */
+.pixel-arrow {
+  display: inline-block;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 8px;
+  color: #FFE033;
+  background: #1A1A4E;
+  border: 2px solid #FFE033;
+  box-shadow: 3px 3px 0 #FFE033;
+  padding: 4px 8px;
+  animation: pixelFloat 3.5s steps(5) infinite alternate;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+}
+
+/* ── Bigger pixel cloud variant ── */
+.pixel-cloud-big {
+  --cb: rgba(255,255,255,0.7);
+  width: 8px; height: 8px;
+  background: var(--cb);
+  box-shadow:
+    8px 0 var(--cb), 16px 0 var(--cb), 24px 0 var(--cb),
+    0 -8px var(--cb), 8px -8px var(--cb), 16px -8px var(--cb), 24px -8px var(--cb), 32px -8px var(--cb),
+    -8px -16px var(--cb), 0 -16px var(--cb), 8px -16px var(--cb), 16px -16px var(--cb), 24px -16px var(--cb), 32px -16px var(--cb), 40px -16px var(--cb),
+    0 -24px var(--cb), 8px -24px var(--cb), 16px -24px var(--cb), 24px -24px var(--cb), 32px -24px var(--cb),
+    8px -32px var(--cb), 16px -32px var(--cb), 24px -32px var(--cb);
+  opacity: 0.65;
+  animation: cloudDrift 16s ease-in-out infinite;
+}
+
+/* ── Grid/checkerboard tile ornament ── */
+.pixel-tile-row {
+  display: flex;
+  gap: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.pixel-tile {
+  width: 12px; height: 12px;
+  flex-shrink: 0;
+}
+.pixel-tile:nth-child(odd)  { background: rgba(255,255,255,0.12); }
+.pixel-tile:nth-child(even) { background: rgba(26,26,78,0.12); }
+
+/* ── Pixel "flag" on pole ── */
+.pixel-flag {
+  display: inline-block;
+  position: relative;
+  animation: pixelFloat 2.5s steps(5) infinite alternate;
+}
+.pixel-flag::before {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 36px;
+  background: #1A1A4E;
+  box-shadow: 1px 0 #FFE033;
+  margin-left: 3px;
+}
+.pixel-flag::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 6px;
+  width: 18px; height: 12px;
+  background: #FF8C1A;
+  border: 2px solid #1A1A4E;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+/* ── Pixel "orb" glow dot ── */
+.pixel-orb {
+  display: inline-block;
+  border-radius: 0;      /* square = pixel */
+  animation: orbPulse 2s steps(4) infinite alternate;
+}
+@keyframes orbPulse {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  50%  { transform: scale(1.3); opacity: 1;   }
+  100% { transform: scale(1);   opacity: 0.7; }
+}
+
+/* ── Horizontal pixel dashes (scanline-like) ── */
+.pixel-scanline-band {
+  width: 100%;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.08) 0px 4px,
+    transparent 4px 8px
+  );
+  pointer-events: none;
+}
+
+/* ── Pixel "brick platform" floor strip ── */
+.pixel-brick-platform {
+  display: inline-flex;
+  gap: 2px;
+  pointer-events: none;
+}
+.pixel-brick-unit {
+  width: 20px; height: 14px;
+  background: #C45A00;
+  border: 2px solid #1A1A4E;
+  position: relative;
+}
+.pixel-brick-unit::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  height: 2px;
+  background: #1A1A4E;
+}
+
+/* ── Pixel "score box" HUD element ── */
+.pixel-hud {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 6px;
+  color: #FFE033;
+  background: rgba(26,26,78,0.75);
+  border: 2px solid #FFE033;
+  box-shadow: 3px 3px 0 #1A1A4E;
+  padding: 5px 10px;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  user-select: none;
+  animation: pixelFloat 5s steps(8) infinite alternate;
+}
+
+/* ── Zigzag border strip ── */
+.pixel-zigzag {
+  width: 100%;
+  height: 10px;
+  background:
+    linear-gradient(135deg, #FFE033 25%, transparent 25%) -5px 0,
+    linear-gradient(225deg, #FFE033 25%, transparent 25%) -5px 0,
+    linear-gradient(315deg, #FFE033 25%, transparent 25%),
+    linear-gradient(45deg,  #FFE033 25%, transparent 25%);
+  background-size: 10px 10px;
+  background-color: #FF8C1A;
+  opacity: 0.6;
+}
+
+/* ── Pixel "trail" dots row ── */
+.pixel-trail {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  pointer-events: none;
+}
+.pixel-trail-dot {
+  width: 6px; height: 6px;
+  background: #FFE033;
+  border: 1px solid #1A1A4E;
+  animation: trailBlink 1s steps(1) infinite;
+}
+.pixel-trail-dot:nth-child(2) { animation-delay: 0.2s; background: #FF8C1A; }
+.pixel-trail-dot:nth-child(3) { animation-delay: 0.4s; background: #38BAFF; }
+.pixel-trail-dot:nth-child(4) { animation-delay: 0.6s; background: #9B59EF; }
+.pixel-trail-dot:nth-child(5) { animation-delay: 0.8s; background: #FFE033; }
+@keyframes trailBlink {
+  0%,49% { opacity: 1; }
+  50%,100% { opacity: 0.2; }
+}
+
+/* ── Pixel "window" panel decoration ── */
+.pixel-window {
+  display: inline-block;
+  background: rgba(56,186,255,0.25);
+  border: 3px solid rgba(255,255,255,0.5);
+  box-shadow: 4px 4px 0 rgba(26,26,78,0.4);
+  position: relative;
+  pointer-events: none;
+}
+.pixel-window::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 10px;
+  background: rgba(255,224,51,0.4);
+  border-bottom: 2px solid rgba(255,255,255,0.3);
+}
+
+/* ── Blinking star pixel ── */
+.pixel-blink-star {
+  display: inline-block;
+  color: #FFE033;
+  font-size: 10px;
+  animation: pixelBlink 0.8s steps(1) infinite;
+  text-shadow: 1px 1px 0 #1A1A4E;
+  user-select: none;
+  pointer-events: none;
+}
+.pixel-blink-star:nth-child(2n) { animation-delay: 0.4s; color: #fff; font-size: 8px; }
+.pixel-blink-star:nth-child(3n) { animation-delay: 0.6s; color: #FF8C1A; font-size: 12px; }
